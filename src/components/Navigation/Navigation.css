@@ -1,0 +1,8 @@
+.NavList {
+  display: flex;
+  text-transform: uppercase;
+}
+
+.NavLink {
+  margin-right: 50px;
+}

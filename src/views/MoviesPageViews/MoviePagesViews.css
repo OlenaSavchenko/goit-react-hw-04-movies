@@ -1,0 +1,22 @@
+.MoviesList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.MoviesItem {
+  width: 15%;
+  margin-right: 15px;
+}
+
+.MoviesThummb {
+  height: 300px;
+}
+
+.MoviesThummb > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
