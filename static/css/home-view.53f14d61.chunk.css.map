@@ -1,0 +1,1 @@
+{"version":3,"sources":["HomePageViews.css"],"names":[],"mappings":"AAAA,mBACE,YAAa,CACb,cAAe,CACf,6BACF,CAEA,mBACE,SAAU,CACV,iBACF","file":"home-view.53f14d61.chunk.css","sourcesContent":[".PopularMoviesList {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n}\n\n.PopularMoviesItem {\n  width: 20%;\n  margin-right: 15px;\n}\n"]}
