@@ -48,14 +48,13 @@ class MovieDetailsPageView extends Component {
       name,
       original_language,
       genres,
-      id,
     } = this.state;
 
     const movieImg = backdrop_path || poster_path;
     const movieName = title || name;
     const movieReleaseDate = release_date || first_air_date;
     const isMovieGenres = genres.length > 0;
-    const { url, path } = this.props.match;
+    const { url } = this.props.match;
 
     return (
       <>
@@ -78,19 +77,16 @@ class MovieDetailsPageView extends Component {
           </ul>
         )}
 
-        {movieName && (
-          <NavLink to={`${url}/${id}`}>
-            <p>The cast</p>
-          </NavLink>
-        )}
-        {movieName && (
-          <NavLink to={`${url}/${id}`}>
-            <p>Reviews</p>
-          </NavLink>
-        )}
+        <NavLink to={`${url}/cast`}>
+          <p>The cast</p>
+        </NavLink>
 
-        <Route path={`${path}/:movieId`} component={Cast} />
-        <Route path={`${path}/:movieId`} component={Reviews} />
+        <NavLink to={`${url}/reviews`}>
+          <p>Reviews</p>
+        </NavLink>
+
+        <Route path={routes.movieCast} component={Cast} />
+        <Route path={routes.movieReviews} component={Reviews} />
       </>
     );
   }
