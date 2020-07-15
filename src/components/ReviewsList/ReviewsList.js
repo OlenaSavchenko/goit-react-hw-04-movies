@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import ReviewsItem from '../ReviewsItem';
 import { getReviewsApi } from '../../services/api';
 
-class Reviews extends Component {
+class ReviewsList extends Component {
   state = {
     reviews: [],
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     const { movieId } = this.props.match.params;
 
-    await getReviewsApi(movieId)
+    getReviewsApi(movieId)
       .then(reviews => {
         this.setState({ reviews: reviews });
       })
@@ -25,12 +26,9 @@ class Reviews extends Component {
         <div>Reviews</div>
         {existingReviews ? (
           <ul>
-            {reviews.map(({ id, author, content, url }) => (
+            {reviews.map(({ id, ...review }) => (
               <li key={id}>
-                <div>
-                  {author}: "{content}"
-                </div>
-                <p>Find more at: {url} </p>
+                <ReviewsItem review={review} />
               </li>
             ))}
           </ul>
@@ -42,4 +40,4 @@ class Reviews extends Component {
   }
 }
 
-export default Reviews;
+export default ReviewsList;

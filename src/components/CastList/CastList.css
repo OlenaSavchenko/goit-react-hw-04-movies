@@ -1,0 +1,9 @@
+.CastList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CastItem {
+  width: 10%;
+  margin-left: 10px;
+}

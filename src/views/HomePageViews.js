@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PopularMovies from '../components/PopularMovies';
+import PopularMoviesList from '../components/PopularMoviesList/';
 
 import { getPopularMoviesApi } from '../services/api';
 
@@ -8,15 +8,15 @@ class HomePageViews extends Component {
     popularMovies: [],
   };
 
-  async componentDidMount() {
-    await getPopularMoviesApi()
+  componentDidMount() {
+    getPopularMoviesApi()
       .then(movies => this.setState({ popularMovies: movies }))
       .catch(error => this.setState({ error }));
   }
 
   render() {
     const { popularMovies } = this.state;
-    return <PopularMovies popularMovies={popularMovies} />;
+    return <PopularMoviesList popularMovies={popularMovies} />;
   }
 }
 
