@@ -23,7 +23,6 @@ class ReviewsList extends Component {
 
     return (
       <>
-        <div>Reviews</div>
         {existingReviews ? (
           <ul>
             {reviews.map(({ id, ...review }) => (

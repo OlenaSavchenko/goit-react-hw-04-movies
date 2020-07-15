@@ -21,14 +21,17 @@ class CastList extends Component {
     const { cast } = this.state;
     return (
       <>
-        <div>Cast</div>
-        <ul className="CastList">
-          {cast.map(({ id, ...castItem }) => (
-            <li key={id} className="CastItem">
-              <CastItem castItem={castItem} />
-            </li>
-          ))}
-        </ul>
+        {cast.length > 0 ? (
+          <ul className="CastList">
+            {cast.map(({ id, ...castItem }) => (
+              <li key={id} className="CastItem">
+                <CastItem castItem={castItem} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>There are no information about cast</p>
+        )}
       </>
     );
   }
