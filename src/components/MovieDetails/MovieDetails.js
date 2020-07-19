@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const baseURL = 'https://image.tmdb.org/t/p/w500';
 const MovieDetails = ({ movie, onButtonClick }) => (
@@ -40,4 +41,34 @@ const MovieDetails = ({ movie, onButtonClick }) => (
   </>
 );
 
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    name: PropTypes.string,
+    backdrop_path: PropTypes.string,
+    poster_path: PropTypes.string,
+    overview: PropTypes.string,
+    runtime: PropTypes.number,
+    original_language: PropTypes.string,
+    release_date: PropTypes.string,
+    first_air_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    homepage: PropTypes.string,
+  }).isRequired,
+  onButtonClick: PropTypes.func.isRequired,
+};
+
+MovieDetails.defaultProps = {
+  title: '',
+  name: '',
+  backdrop_path: '',
+  poster_path: '',
+  overview: '',
+  runtime: null,
+  original_language: '',
+  release_date: '',
+  first_air_date: '',
+  vote_average: null,
+  homepage: '',
+};
 export default MovieDetails;

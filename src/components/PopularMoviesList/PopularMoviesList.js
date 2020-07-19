@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PopularMoviesItem from '../PopularMoviesItem';
 import './PopularMoviesList.css';
 
@@ -15,6 +16,14 @@ const PopularMoviesList = ({ popularMovies }) => {
       </ul>
     </>
   );
+};
+
+PopularMoviesList.propTypes = {
+  popularMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default PopularMoviesList;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import CastList from '../components/CastList';
 import ReviewsList from '../components/ReviewsList';
 import MovieDetails from '../components/MovieDetails';
@@ -7,8 +8,25 @@ import routes from '../routes';
 import { getMovieApi } from '../services/api';
 
 class MovieDetailsPageView extends Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        movieId: PropTypes.string.isRequired,
+      }).isRequired,
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+    location: PropTypes.shape({
+      state: PropTypes.shape({
+        from: PropTypes.objectOf.isRequired,
+      }),
+    }).isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }).isRequired,
+  };
+
   state = {
-    movie: [],
+    movie: {},
   };
 
   componentDidMount() {
@@ -17,7 +35,6 @@ class MovieDetailsPageView extends Component {
     getMovieApi(movieId)
       .then(response => {
         this.setState({ movie: response });
-        console.log(this.state);
       })
       .catch(error => this.setState({ error }));
   }

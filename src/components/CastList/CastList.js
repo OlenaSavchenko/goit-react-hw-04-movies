@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import CastItem from '../CastItem';
+import PropTypes from 'prop-types';
 import { getCastApi } from '../../services/api';
 import './CastList.css';
 
 class CastList extends Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        movieId: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  };
+
   state = {
     cast: [],
   };
@@ -21,17 +30,13 @@ class CastList extends Component {
     const { cast } = this.state;
     return (
       <>
-        {cast.length > 0 ? (
-          <ul className="CastList">
-            {cast.map(({ id, ...castItem }) => (
-              <li key={id} className="CastItem">
-                <CastItem castItem={castItem} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>There are no information about cast</p>
-        )}
+        <ul className="CastList">
+          {cast.map(({ id, ...castItem }) => (
+            <li key={id} className="CastItem">
+              <CastItem castItem={castItem} />
+            </li>
+          ))}
+        </ul>
       </>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import defaultImage from '../../img/default.jpg';
 import './CastItem.css';
 
@@ -22,5 +23,15 @@ const CastItem = ({ castItem }) => (
     </div>
   </>
 );
+
+CastItem.propTypes = {
+  castItem: PropTypes.shape({
+    profile_path: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    character: PropTypes.string,
+  }).isRequired,
+};
+
+CastItem.defaultProps = { profile_path: defaultImage, character: '' };
 
 export default CastItem;

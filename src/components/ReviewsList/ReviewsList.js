@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReviewsItem from '../ReviewsItem';
 import { getReviewsApi } from '../../services/api';
 
 class ReviewsList extends Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        movieId: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  };
+
   state = {
     reviews: [],
   };
@@ -12,7 +21,7 @@ class ReviewsList extends Component {
 
     getReviewsApi(movieId)
       .then(reviews => {
-        this.setState({ reviews: reviews });
+        this.setState(reviews);
       })
       .catch(error => this.setState({ error }));
   }

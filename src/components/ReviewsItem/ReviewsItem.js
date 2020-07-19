@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ReviewsItem = ({ review }) => (
   <>
@@ -8,5 +9,19 @@ const ReviewsItem = ({ review }) => (
     <p>Find more at: {review.url} </p>
   </>
 );
+
+ReviewsItem.propTypes = {
+  movie: PropTypes.shape({
+    author: PropTypes.string,
+    content: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+};
+
+ReviewsItem.defaultProps = {
+  author: '',
+  content: '',
+  url: '',
+};
 
 export default ReviewsItem;

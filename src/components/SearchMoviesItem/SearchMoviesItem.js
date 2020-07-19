@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SearchMoviesItem.css';
 import defaultImage from '../../img/default.jpg';
 
@@ -20,4 +21,20 @@ const SearchMoviesItem = ({ movie }) => (
     <p>{movie.title || movie.name}</p>
   </>
 );
+
+SearchMoviesItem.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    name: PropTypes.string,
+    backdrop_path: PropTypes.string,
+    poster_path: PropTypes.string,
+  }).isRequired,
+};
+
+SearchMoviesItem.defaultProps = {
+  title: '',
+  name: '',
+  backdrop_path: '',
+  poster_path: '',
+};
 export default SearchMoviesItem;

@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from '../components/SearchBar';
 import SearchMoviesList from '../components/SearchMoviesList';
 import { getMoviesApi } from '../services/api';
 
 class MoviesPageViews extends Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+
   state = {
     movies: [],
     query: '',
